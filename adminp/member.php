@@ -59,7 +59,7 @@
 	<label>Area Of Interest:</label>
 	<input type="checkbox" value="Field" name="aoi[]" value="">
 	<label>1. Field</label>
-	<input type="checkbox" value="EP" name="aoi[]" value="">
+	<input type="checkbox" value="EVent Participation" name="aoi[]" value="">
 	<label>2. Event Participation</label>
 	<input type="checkbox" value="HR" name="aoi[]" value="">
 	<label>3. HR</label>

@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Member List</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-</head>
-<body>
 <?php 
 function html_table($data = array())
 {
@@ -29,14 +17,12 @@ function html_table($data = array())
     <th>Email</th>
     <th>Occupation/College</th>
     <th>School</th>
+    <th>Current Club</th>
     <th>Society</th>
-    <th>Contact</th>
-    <th>Contact</th>
-    <th>Contact</th>
-    <th>Contact</th>
-    <th>Contact</th>
-    <th>Contact</th>
-    <th>Contact</th>
+    <th>Status</th>
+    <th>Prev Mem No</th>
+    <th>Mem Duration</th>
+    <th>Areas Of Interest</th>
     <th>Contact</th>
     <th>Contact</th>
     </tr></thead><tbody>". implode('', $rows). "</tbody></table>";
@@ -50,30 +36,33 @@ session_start();
 $_SESSION['curr_page_class'] = '.mem_list';
 
 
-$res = mysqli_fetch_all(mysqli_query($con,"select * from member"));
+$res = mysqli_fetch_all(mysqli_query($con,"select * from member"),MYSQLI_ASSOC);
+//print_r($res);
+foreach($res as $i=>$r)
+{
+	$res[$i]['photo_location'] = "<img src='".$res[$i]['photo_location']."' height=100 width=150 alt'".$res[$i]['photo_location']."' >";	
+	foreach($r as $x=>$q)
+	{
+		$res[$i][$x]= '"'.$res[$i][$x].'"';
 
-print_r($res);
+	}
+	unset($res[$i]['payment']);
+	unset($res[$i]['agreed']);
+}
+//$res[0]['photo_location'] = '<img src="'.$res[0]['photo_location'].'" height=200 width=300 alt"'.$res[0]['photo_location'].'" >';
+/*echo html_table($res);*/
 
-echo html_table($res);
+$s = '{ "data" : [';
+
+foreach ($res as $r)
+{
+	$s = $s.'['.implode($r,",").'],';
+}
+
+$s = substr($s, 0, -1);
+$s = $s.'] }'; 
+
+
+echo $s;
 
 ?>
-<script
-  src="https://code.jquery.com/jquery-3.4.0.min.js"
-  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-  crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-$(".table").DataTable({
-		scrollX : true,
-		responsive : true,
-		fixedColumns: {
-			leftColumns: 2
-		}
-	});
-	});
-</script>
-</body>
-</html>

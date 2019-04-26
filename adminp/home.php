@@ -32,8 +32,7 @@ else
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.dataTables.min.css">
 </head>
 
 <body>
@@ -99,8 +98,11 @@ else
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
@@ -110,12 +112,6 @@ else
     });
   </script>
 
-<script
-  src="https://code.jquery.com/jquery-3.4.0.min.js"
-  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-  crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
 <script type="text/javascript">
 	$(".add_member").click(function()
 	{
@@ -124,19 +120,29 @@ else
 	$(".home").click(function()
 	{
 		$(".load").load("./home_opt.php");
+		
 	});
 	$(".mem_list").click(function()
 	{
-		$(".load").load("./member_list.php");
+		$(".load").html("<table class='table hover stripe row-border order-column'><thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th>    <th>Address</th> <th>Contact</th>    <th>Pan Id No</th>    <th>Email</th>    <th>Occupation/College</th>    <th>School</th><th>Current Club</th>    <th>Society</th>    <th>Status</th>    <th>Prev Mem No</th>    <th>Mem Duration</th>    <th>Areas Of Interest</th>  <th>Photo</th> <th>Timestamp</th> </tr></thead><tbody></tbody></table>");
+				$(".table").DataTable(
+					{
+						scrollX : true,
+						responsive : true,
+						fixedColumns: {
+							leftColumns: 2
+						},
+						"ajax":
+						{
+							url: "./member_list.php"
+						}
+			});
 	});
 </script>
 <script type="text/javascript">
 	var a = (<?php echo $curr_page_class; ?>);
 	console.log(a);
 	$(a).click();
-</script>
-<script type="text/javascript">
-	$(".table").DataTable();
 </script>
 </body>
 
