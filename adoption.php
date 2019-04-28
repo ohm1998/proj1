@@ -48,7 +48,7 @@
 				          <li><a href="about.html">About Us</a></li>
 				          
 				          <li><a href="dogs.html">Dogs</a></li>
-				          						          
+							<li><a href="adoption.php">Adoption & Lost/Found</a></li>				          						          
 				          <li><a href="contact.html">Contact</a></li>
 				          			              
 				        </ul>
