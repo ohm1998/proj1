@@ -99,62 +99,57 @@
 						</div>
 						<?php }
 						?>
-						<!-- <div class="col-lg-3 col-md-6">
+					</div>
+				</div>
+				<div class="container">
+				<h2>Lost And Found:</h2>
+					<div class="row">
+						<form class="form-area " id="contactForm" action="lost_found.php" method="post" class="contact-form text-right" enctype="multipart/form-data">
+								<div class="row">	
+									<div class="col-lg-6 form-group">
+										<input name="name" placeholder="Enter Animal Type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Animal Type'" class="common-input mb-20 form-control" required="" type="text">
+										<div class="col-lg-6 form-group">
+										<textarea class="common-textarea form-control" name="animal_details" placeholder="Details Of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Details Of animal'" required=""></textarea>						
+									</div>
+										<input name="owner_name" placeholder="Enter Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'" class="common-input mb-20 form-control" required="" type="text">
+
+										<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact">
+										<input type="file" name="lost_photo">
+									</div>
+									<div class="col-lg-6 form-group">
+										<textarea class="common-textarea form-control" name="address" placeholder="Enter address of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter address of animal'" required=""></textarea>						
+									</div>
+									<div class="col-lg-12 d-flex justify-content-between">
+										<div class="alert-msg" style="text-align: left;"></div>
+										<button class="genric-btn primary circle" style="float: right;">Upload Data</button>		
+									</div>
+								</div>
+							</form>	
+					</div>
+				</div>
+				<div class="container">
+				<h2>Lost & found:</h2>
+					<div class="row">
+						<?php  
+						require("./connection.php");
+
+						$sql = "select * from lost_found where status=0;";
+						$res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
+						foreach($res as $r)
+						{ ?>
+						<div class="col-lg-3 col-md-6 pet_click" onclick="pet_adopt(<?php echo $r['sr']; ?>)">
 							<div class="single-cat-list">
-							  <img src="img/dg2.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog</div>
+							  <img src="<?php echo "adminp".$r['photo_location']; ?>" alt="" style="height: 250px; width: 350px;"  class="img-fluid">
+							  <div class="overlay" >
+							    <div class="text top-right" style="padding: 15px;">
+							    	<?php echo "Animal: ".$r['animal']; ?><br>
+							    	<?php echo "Detail".$r['animal_details']; ?>
+							    </div>
 							  </div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6">
-							<div class="single-cat-list">
-							  <img src="img/dg3.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog Very Good <br> Dog</div>
-							  </div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<div class="single-cat-list">
-							  <img src="img/dg4.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog</div>
-							  </div>
-							</div>
-						</div>	
-						<div class="col-lg-3 col-md-6">
-							<div class="single-cat-list">
-							  <img src="img/dg5.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog</div>
-							  </div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<div class="single-cat-list">
-							  <img src="img/dg6.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog</div>
-							  </div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<div class="single-cat-list">
-							  <img src="img/dg7.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog</div>
-							  </div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<div class="single-cat-list">
-							  <img src="img/dg8.jpg" alt="" class="img-fluid">
-							  <div class="overlay">
-							    <div class="text">Siamese Dog</div>
-							  </div>
-							</div>
-						</div>												 -->
+						<?php }
+						?>
 					</div>
 				</div>	
 			</section>
@@ -242,7 +237,7 @@
 											<span class="lnr lnr-envelope"></span>
 										</div>
 										<div class="detail">
-											<h4>support@sleeksites.com</h4>
+											<h4>support@sleeksites.in</h4>
 											<p>
 												Send us your query anytime!
 											</p>
@@ -257,7 +252,7 @@
 					<div class="container">
 						<div class="row footer-bottom d-flex justify-content-between">
 							<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://sleeksites.com" target="_blank">sleeksites</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://sleeksites.in" target="_blank">Sleeksites</a>
 </p>
 							<div class="col-lg-4 col-sm-6 footer-social">
 								<a href="#"><i class="fa fa-facebook"></i></a>
