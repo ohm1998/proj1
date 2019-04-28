@@ -12,6 +12,16 @@ if(isset($_POST['del_anim_id']))
 ?>
 <?php 
 
+if(isset($_POST['del_adopter_id']))
+{
+	$q = "delete from adopter_details where id=".$_POST['del_adopter_id'];
+	mysqli_query($con,$q);
+	//mysqli_query($con,$q);
+}
+
+?>
+<?php 
+
 
 if(isset($_POST['adopt_status_chng_id']))
 {
@@ -126,6 +136,13 @@ foreach($res as $i=>$r)
 echo html_table2($res);
 
 ?>
+<h2>Delete Adopter Detail:</h2>
+
+<form method="POST" accept-charset="utf-8">
+	<label>Adopter Id: </label>
+	<input type="text" name="del_adopter_id" required>
+	<input type="submit" value="Delete">
+</form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
