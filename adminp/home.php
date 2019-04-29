@@ -34,6 +34,7 @@ else
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.dataTables.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 </head>
 
 <body>
@@ -86,7 +87,7 @@ else
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
-
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
@@ -112,14 +113,11 @@ else
   });
 	$(".mem_list").click(function()
 	{
-		$(".load").html("<br><br><h2 class='alert alert-primary'>Member Details:</h2><table class='table hover stripe row-border order-column'><thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th>    <th>Address</th> <th>Contact</th>    <th>Pan Id No</th>    <th>Email</th>    <th>Occupation/College</th>    <th>School</th><th>Current Club</th>    <th>Society</th>    <th>Status</th>    <th>Prev Mem No</th>    <th>Mem Duration</th>    <th>Areas Of Interest</th>  <th>Photo</th> <th>Timestamp</th> </tr></thead><tbody></tbody></table>");
+		$(".load").html("<br><br><h2 class='alert alert-primary'>Member Details:</h2><table class='table hover stripe row-border'><thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th>    <th>Address</th> <th>Contact</th>    <th>Pan Id No</th>    <th>Email</th>    <th>Occupation/College</th>    <th>School</th><th>Current Club</th>    <th>Society</th>    <th>Status</th>    <th>Prev Mem No</th>    <th>Mem Duration</th>    <th>Areas Of Interest</th>  <th>Photo</th> <th>Timestamp</th> </tr></thead><tbody></tbody></table>");
 				$(".table").DataTable(
 					{
 						scrollX : true,
 						responsive : true,
-						fixedColumns: {
-							leftColumns: 2
-						},
 						"ajax":
 						{
 							url: "./member_list.php"

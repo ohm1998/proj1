@@ -8,6 +8,7 @@ if(isset($_POST['del_anim_id']))
 	$q = "delete from adoption where sr=".$_POST['del_anim_id'];
 	echo $q;
 	mysqli_query($con,$q) or die(mysqli_error($con));
+	header('location:home.php');
 }
 
 
@@ -18,6 +19,7 @@ if(isset($_POST['del_adopter_id']))
 {
 	$q = "delete from adopter_details where id=".$_POST['del_adopter_id'];
 	mysqli_query($con,$q);
+	header('location:home.php');
 	//mysqli_query($con,$q);
 }
 
@@ -82,6 +84,7 @@ foreach ($res as $key => $value)
 	<link href="css/simple-sidebar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
   <style>
   	.form-inline > * {
     margin:15px 3px !important;
@@ -182,10 +185,12 @@ echo html_table2($res);
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
-
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript">
   $(document).ready( function () {
-    $('.table').DataTable();
+    $('.table').DataTable({
+    	responsive: true
+    });
 } );
 </script>
 </body>

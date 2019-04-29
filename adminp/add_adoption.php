@@ -28,5 +28,5 @@ $res = mysqli_query($con,$query);
 
 move_uploaded_file($_FILES['adopt_photo']['tmp_name'], ".".$target);
 
-header("Location: ./adoption.php");
+header("Location: ./home.php");
 ?>
