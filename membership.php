@@ -206,12 +206,12 @@
 								</div>
 								<br>
 								<div class="form-group">
-								  	<label class="checkbox-inline"><input type="checkbox" value="1" name="agree">&nbspI have read and understood each of above conditions. My signature below indicates that I agree to comply with them.</label>
+								  	<label class="checkbox-inline"><input type="checkbox" value="1" name="agree" onchange="activateButton(this)">&nbspI have read and understood each of above conditions. My signature below indicates that I agree to comply with them.</label>
 								</div>
 
 
 								<div class="form-group">
-									<input type="submit" class="btn btn-success" value="Submit" required>
+									<input type="submit" class="btn btn-success" value="Submit" id="submitForm" required>
 								</div>
 
 							</form>
@@ -353,6 +353,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				{
 					window.location.href = "./adoption_form.php?sr="+sr;
 				}
+				$( document ).ready(function() {
+				    document.getElementById("submitForm").disabled = true;
+				});
+				function activateButton(element) {
+
+			      if(element.checked) {
+			        document.getElementById("submitForm").disabled = false;
+			       }
+			       else  {
+			        document.getElementById("submitForm").disabled = true;
+			      }
+
+			  }
 			</script>
 		</body>
 	</html>
