@@ -1,11 +1,13 @@
 <?php 
 require("./connection.php");
-
+session_start();
+$_SESSION['curr_page_class']='.adopt_form';
 
 if(isset($_POST['del_anim_id']))
 {
 	$q = "delete from adoption where sr=".$_POST['del_anim_id'];
-	mysqli_query($con,$q);
+	echo $q;
+	mysqli_query($con,$q) or die(mysqli_error($con));
 }
 
 
@@ -27,6 +29,7 @@ if(isset($_POST['adopt_status_chng_id']))
 {
 	$q = "UPDATE adoption SET adopt_status = (CASE adopt_status WHEN 1 THEN 0 ELSE 1 END) where sr=".$_POST['adopt_status_chng_id'];
 	mysqli_query($con,$q);
+	header('location:home.php');
 }
 
 ?>
@@ -79,28 +82,48 @@ foreach ($res as $key => $value)
 	<link href="css/simple-sidebar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.dataTables.min.css">
+  <style>
+  	.form-inline > * {
+    margin:15px 3px !important;
+	}
+  </style>
 </head>
 <body>
-<h2>Add Animal For Adoption</h2>
-<form action="./add_adoption.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-	<label>Animal</label>
-	<input type="text" name="animal">
-	<label>Age</label>
-	<input type="text" name="age">
-	<label>Gender</label>
-	<input type="text" name="gender">
-	<label>Breed</label>
-	<input type="text" name="breed">
-	<label>Photo</label>
-	<input type="file" name="adopt_photo">
-	<input type="submit" value="Add">
-</form>
-<h2>Change Adoption Status:</h2>
+<br>
+<h2 class="alert alert-primary">Add Animal For Adoption</h2>    
 
-<form method="POST" accept-charset="utf-8">
-	<label>Animal Id: </label>
-	<input type="text" name="adopt_status_chng_id" required>
-	<input type="submit" value="Change">
+
+<form action="add_adoption.php" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="form-inline">
+	<div class="form-group">
+		<input type="text" class="form-control" name="animal" placeholder="Animal" required="">
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" name="age" placeholder="Age"  required>
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" name="gender" placeholder="Gender" required>
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" name="breed" placeholder="Breed" required>
+	</div>
+	<div class="custom-file">
+	    <input type="file" class="form-control custom-file-input" name="adopt_photo" aria-describedby="inputGroupFileAddon01">
+	    <label class="custom-file-label" for="inputGroupFile01">Upload Photo</label>
+    </div>
+	<div class="form-group">
+		<input type="submit" class="btn btn-success" value="Submit">
+	</div>
+</form>
+<br><br>
+<h2 class="alert alert-primary">Change Adoption Status:</h2>
+
+<form method="POST" action="adoption.php" accept-charset="utf-8" class="form-inline">
+	<div class="form-group">
+		<input type="text" class="form-control" name="adopt_status_chng_id" placeholder="Animal Id" required>
+	</div>
+	<div class="form-group">
+		<input type="submit" class="btn btn-success" value="Change">
+	</div>
 </form>
 
 <br><br>
@@ -110,15 +133,20 @@ echo html_table($res);
 
 ?>
 
-<h2>Delete animal:</h2>
+<br><br>
+<h2 class="alert alert-primary">Delete animal:</h2>
 
-<form method="POST" accept-charset="utf-8">
-	<label>Animal Id: </label>
-	<input type="text" name="del_anim_id" required>
-	<input type="submit" value="Delete">
+<form method="POST" action="adoption.php" accept-charset="utf-8" class="form-inline">
+	<div class="form-group">
+		<input type="text" class="form-control" name="del_anim_id" placeholder="Animal Id" required>
+	</div>
+	<div class="form-group">
+		<input type="submit" class="btn btn-success" value="Delete">
+	</div>
 </form>
 
-<h2>Adoption Enquiries:</h2>
+<br><br>
+<h2 class="alert alert-primary">Adoption Enquiries:</h2>
 <?php  
 
 $sql = "select *  from adopter_details join adoption on adoption.sr=adopter_details.anim_sr";
@@ -136,13 +164,18 @@ foreach($res as $i=>$r)
 echo html_table2($res);
 
 ?>
-<h2>Delete Adopter Detail:</h2>
+<br><br>
+<h2 class="alert alert-primary">Delete Adopter Detail:</h2>
 
-<form method="POST" accept-charset="utf-8">
-	<label>Adopter Id: </label>
-	<input type="text" name="del_adopter_id" required>
-	<input type="submit" value="Delete">
+<form method="POST" action="adoption.php" accept-charset="utf-8" class="form-inline">
+	<div class="form-group">
+		<input type="text" class="form-control" name="del_adopter_id" placeholder="Adopter Id" required>
+	</div>
+	<div class="form-group">
+		<input type="submit" class="btn btn-success" value="Delete">
+	</div>
 </form>
+<br><br><br>
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

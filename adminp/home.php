@@ -47,6 +47,7 @@ else
         <a class="list-group-item list-group-item-action bg-light home">Home</a>
         <a class="list-group-item list-group-item-action bg-light add_member">Add Member</a>
         <a class="list-group-item list-group-item-action bg-light mem_list">Member List</a>
+        <a class="list-group-item list-group-item-action bg-light adopt_form">Adoption</a>
         <a class="list-group-item list-group-item-action bg-light">Events</a>
         <a class="list-group-item list-group-item-action bg-light">Profile</a>
         <a class="list-group-item list-group-item-action bg-light">Status</a>
@@ -104,9 +105,14 @@ else
 		$(".load").load("./home_opt.php");
 		
 	});
+  $(".adopt_form").click(function()
+  {
+    $(".load").load("./adoption.php");
+    
+  });
 	$(".mem_list").click(function()
 	{
-		$(".load").html("<table class='table hover stripe row-border order-column'><thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th>    <th>Address</th> <th>Contact</th>    <th>Pan Id No</th>    <th>Email</th>    <th>Occupation/College</th>    <th>School</th><th>Current Club</th>    <th>Society</th>    <th>Status</th>    <th>Prev Mem No</th>    <th>Mem Duration</th>    <th>Areas Of Interest</th>  <th>Photo</th> <th>Timestamp</th> </tr></thead><tbody></tbody></table>");
+		$(".load").html("<br><br><h2 class='alert alert-primary'>Member Details:</h2><table class='table hover stripe row-border order-column'><thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th>    <th>Address</th> <th>Contact</th>    <th>Pan Id No</th>    <th>Email</th>    <th>Occupation/College</th>    <th>School</th><th>Current Club</th>    <th>Society</th>    <th>Status</th>    <th>Prev Mem No</th>    <th>Mem Duration</th>    <th>Areas Of Interest</th>  <th>Photo</th> <th>Timestamp</th> </tr></thead><tbody></tbody></table>");
 				$(".table").DataTable(
 					{
 						scrollX : true,
