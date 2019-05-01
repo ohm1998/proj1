@@ -68,14 +68,15 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Adoption / Lost & Found				
+								Adoption			
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="./adoption.php"> Adoption / Lost & Found</a></p>
+							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="./adoption.php"> Adoption </a></p>
 						</div>	
 					</div>
 				</div>
 			</section>
 			<!-- End banner Area -->	
+
 			<!-- Start cat-list Area -->
 			<section class="cat-list-area section-gap" >
 				<div class="container">
@@ -105,65 +106,7 @@
 						?>
 					</div>
 				</div>
-				<div class="container">
-					<h2>Lost And Found:</h2><br>
-					<div class="row">
-						<div class="col-lg-12">
-							<form class="form-area" id="contactForm" action="lost_found.php" method="post" class="contact-form text-right" enctype="multipart/form-data">
-								<div class="row">
-										<div class="col-lg-6 form-group">
-											<input name="name" placeholder="Enter Animal Type" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Animal Type'" class="common-input mb-20 form-control" required="" type="text">
-											<input name="owner_name" placeholder="Enter Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'" class="common-input mb-20 form-control" required="" type="text">
-
-											<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact">
-											Photo:&nbsp<input type="file" name="lost_photo" required="">
-										</div>
-
-										<div class="col-lg-6 form-group">
-											<textarea class="common-textarea form-control" name="animal_details" placeholder="Details Of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Details Of animal'" required=""></textarea><br>	
-
-											<textarea class="common-textarea form-control" name="address" placeholder="Enter address of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter address of animal'" required=""></textarea>					
-										</div>
-
-										
-										<div class="col-lg-12 d-flex justify-content-between">
-											<div class="alert-msg" style="text-align: left;"></div>
-											<button class="genric-btn primary circle" style="float: right;">Upload Data</button>		
-										</div>
-								</div>
-							</form>
-						</div>	
-					</div>
-						
-					
-				</div>
-				<div class="container">
-				<h2>Lost & found:</h2><br>
-					<div class="row">
-						<?php  
-						require("./connection.php");
-
-						$sql = "select * from lost_found where status=0;";
-						$res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
-						foreach($res as $r)
-						{ ?>
-						<div class="col-lg-3 col-md-6 pet_click" onclick="pet_adopt(<?php echo $r['sr']; ?>)" style="cursor: pointer;">
-							<div class="single-cat-list">
-							  <img src="<?php echo "adminp".$r['photo_location']; ?>" alt="" style="height: 250px; width: 350px;"  class="img-fluid">
-							  <div class="overlay" >
-							    <div class="text top-right" style="padding: 15px;">
-							    	<?php echo "Animal: ".$r['animal']; ?><br>
-							    	<?php echo "Detail".$r['animal_details']; ?>
-							    </div>
-							  </div>
-							</div>
-						</div>
-						<?php }
-						?>
-					</div>
-				</div>	
-			</section>
-			<!-- End cat-list Area -->
+				
 					
 
 			<!-- Start calltoaction Area -->
