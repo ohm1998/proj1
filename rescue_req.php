@@ -23,13 +23,14 @@ if(($num_of_rows+1)>=1000)
 
 $today = getdate();
 $case_date = $today["mday"]."/".$today["mon"]."/".$today["year"];
-$case_title = $_POST["case_title"];
-$name = $_POST["contact_name"];
-$contact_num = $_POST["contact"];
-$address = $_POST["animal_address"];
-$problem = $_POST["animal_problem"];
+$case_title = $_GET["case_title"];
+$name = $_GET["contact_name"];
+$contact_num = $_GET["contact"];
+$address = $_GET["animal_address"];
+$problem = $_GET["animal_problem"];
 //Add Query 
 $sql_add_query = "insert into rescue values ('$case_id','$case_title','$case_date','$address'
 												,'$contact_num','$name','$problem')";
+print_r("The Record was saved");
 $con->query($sql_add_query);
 ?>

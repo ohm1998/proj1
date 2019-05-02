@@ -83,26 +83,30 @@
 					<h2>Rescue:</h2><br>
 					<div class="row">
 						<div class="col-lg-12">
-							<form class="form-area" id="contactForm" action="rescue_req.php" method="post" class="contact-form text-right" enctype="multipart/form-data">
+							<form class="form-area" id="contactForm" class="contact-form text-right">
 								<div class="row">
 								<div class="col-lg-6 form-group">
-											<input name="case_title" placeholder="Enter case title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Case Title'" class="common-input mb-20 form-control" required="" type="text">
-											<input name="contact_name" placeholder="Enter Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'" class="common-input mb-20 form-control" required="" type="text">
-											<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact">
+											<input name="case_title" placeholder="Enter case title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Case Title'" class="common-input mb-20 form-control" required="" type="text" id="case_title">
+											<input name="contact_name" placeholder="Enter Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'" class="common-input mb-20 form-control" required="" type="text" id="contact_name">
+											<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact" id="contact">
 										</div>
 										<div class="col-lg-6 form-group">
-											<textarea class="common-textarea form-control" name="animal_address" placeholder="Address of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address of the animal'" required></textarea><br>				
-											<textarea class="common-textarea form-control" name="animal_problem" placeholder="Problem of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Problem of the animal'" required></textarea>	
+											<textarea class="common-textarea form-control" name="animal_address" placeholder="Address of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address of the animal'" required
+											 id="animal_address"></textarea>
+											 <br>				
+											<textarea class="common-textarea form-control" name="animal_problem" placeholder="Problem of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Problem of the animal'" required
+											id="animal_problem"></textarea >	
 										</div>
 										<div class="col-lg-12 d-flex justify-content-between">
 											<div class="alert-msg" style="text-align: left;"></div>
-											<button class="genric-btn primary circle" style="float: right;">Add Rescue Data</button>		
+											<button class="genric-btn primary circle" id="submit" style="float: right;">Add Rescue Data</button>		
 										</div>
 								</div>
 							</form>
 						</div>	
 					</div>
 				</div>
+				<div id="print"></div>
 	<br>
 	<br>
 <!-- Form Ends -->
@@ -121,9 +125,37 @@
 <script src="js/mail-script.js"></script>	
 <script src="js/main.js"></script>	
 <script type="text/javascript">
-function pet_adopt(sr)
+$('#submit').on("click",function()
 {
-	window.location.href = "./adoption_form.php?sr="+sr;
-}
+    var req; 
+    var url = 
+    	"rescue_req.php?case_title="+$("#case_title").val()
+    	+"&contact_name="+$('#contact_name').val()
+    	+"&contact="+$('#contact').val()
+    	+"&animal_address="+$("#animal_address").val()
+    	+"&animal_problem="+$("#animal_problem").val();
+    if(window.XMLHttpRequest)
+    {
+        req = new XMLHttpRequest();
+    }
+    else if(window.ActiveXObject)
+    {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    else
+    {
+        alert("AJAX not supported");
+    }
+    function meth()
+    {
+        if(req.readyState===4)
+    	{
+        	$('#print').html(req.responseText);
+    	}
+	}
+	req.onreadystatechange = meth;
+	req.open("GET",url,true);
+	req.send();
+});
 </script>
 </html>
