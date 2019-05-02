@@ -49,7 +49,7 @@ else
         <a class="list-group-item list-group-item-action bg-light add_member">Add Member</a>
         <a class="list-group-item list-group-item-action bg-light mem_list">Member List</a>
         <a class="list-group-item list-group-item-action bg-light adopt_form">Adoption</a>
-        <a class="list-group-item list-group-item-action bg-light">Events</a>
+        <a class="list-group-item list-group-item-action bg-light rescue_unattended">Rescue Unattended</a>
         <a class="list-group-item list-group-item-action bg-light">Profile</a>
         <a class="list-group-item list-group-item-action bg-light">Status</a>
       </div>
@@ -124,6 +124,10 @@ else
 						}
 			});
 	});
+  $(".rescue_unattended").click(function()
+  {
+    $(".load").load("./rescue_unattended.php");
+  });
 </script>
 <script type="text/javascript">
 	var a = (<?php echo $curr_page_class; ?>);
