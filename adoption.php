@@ -14,7 +14,7 @@
 		
 		<meta charset="UTF-8">
 		
-		<title>Adoption / Lost And Found</title>
+		<title>Adoption</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -51,7 +51,9 @@
 				          <li class="menu-active"><a href="index.html">Home</a></li>
 				          <li><a href="about.html">About Us</a></li>
 				          <li><a href="dogs.html">Dogs</a></li>
-				          <li><a href="adoption.php">Adoption & Lost/Found</a></li>
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="lost_found1.php">Lost and Found</a></li>
+
 				          <li><a href="membership.php">Membership</a></li>
 				          <li><a href="contact.html">Contact</a></li>
 				          			              

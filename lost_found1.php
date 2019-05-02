@@ -14,7 +14,7 @@
 		
 		<meta charset="UTF-8">
 		
-		<title>Adoption / Lost And Found</title>
+		<title>Lost And Found</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -113,7 +113,6 @@
 					<div class="row">
 						<?php  
 						require("./connection.php");
-
 						$sql = "select * from lost_found where status=0;";
 						$res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 						foreach($res as $r)
