@@ -2,8 +2,6 @@
 require("./connection.php");
 session_start();
 $_SESSION['curr_page_class']='.rescue_unattended';
-
-print_r($_POST);
 if(isset($_POST['mem_id']) && isset($_POST['case_id']))
 {
 	print_r($_POST);

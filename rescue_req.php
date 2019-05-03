@@ -31,6 +31,6 @@ $problem = $_GET["animal_problem"];
 //Add Query 
 $sql_add_query = "insert into rescue values ('$case_id','$case_title','$case_date','$address'
 												,'$contact_num','$name','$problem')";
-print_r("The Record was saved");
+echo ("The Record was saved");
 $con->query($sql_add_query);
 ?>

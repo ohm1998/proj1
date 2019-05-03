@@ -83,7 +83,7 @@
 					<h2>Rescue:</h2><br>
 					<div class="row">
 						<div class="col-lg-12">
-							<form class="form-area" id="contactForm" class="contact-form text-right">
+							<form class="form-area" id="contactForm" class="contact-form text-right" method="post">
 								<div class="row">
 								<div class="col-lg-6 form-group">
 											<input name="case_title" placeholder="Enter case title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Case Title'" class="common-input mb-20 form-control" required="" type="text" id="case_title">
@@ -125,7 +125,7 @@
 <script src="js/mail-script.js"></script>	
 <script src="js/main.js"></script>	
 <script type="text/javascript">
-$('#submit').on("click",function()
+/*$('#submit').on("click",function()
 {
     var req; 
     var url = 
@@ -156,6 +156,17 @@ $('#submit').on("click",function()
 	req.onreadystatechange = meth;
 	req.open("GET",url,true);
 	req.send();
+});*/
+$('#submit').on("click",function(){
+	$.ajax({    	
+		type:'GET',
+		url: "rescue_req.php?case_title="+$("#case_title").val()
+	    	+"&contact_name="+$('#contact_name').val()
+	    	+"&contact="+$('#contact').val()
+	    	+"&animal_address="+$("#animal_address").val()
+	    	+"&animal_problem="+$("#animal_problem").val(),
+	    	success:function(response){alert("Saved!")}
+	});
 });
 </script>
 </html>
