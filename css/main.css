@@ -4006,3 +4006,21 @@ body.mobile-nav-active #mobile-nav-toggle {
                End Blog Details  Page style
 ################
 */
+
+#ajaxLoadingIcon {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.5);
+        -webkit-transition: all .5s ease;
+        z-index: 9000;
+        display:none;
+        text-align:center;
+}
+
+#ajaxLoadingIcon > img {
+  height: 10vh;
+  margin-top: 45vh;  
+}

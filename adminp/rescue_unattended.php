@@ -74,7 +74,9 @@ function html_table3($data = array())
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 </head>
 <body>
-<h1>Case List:</h1>
+<br>
+<h2 class="alert alert-primary">Case List:</h2>
+<br>
 
 <?php 
 
@@ -103,18 +105,21 @@ foreach($res as $key=>$r)
 echo html_table($res);
 
 ?>
+<br>
+<br>
 <div class="members">
-<h1>Member List:</h1>
+<h2 class="alert alert-primary">Member List:</h2><br>
 	<?php 
 		$r = mysqli_fetch_all(mysqli_query($con,"select `sr`,`name`,`dob`,`age`,`contact` from member"),MYSQLI_ASSOC);
 		echo html_table2($r); 
 	?>
 </div>
+<br><br>
 <form method="POST" action="rescue_unattended.php">
-	<h1>Assign Case To Member</h1>
+	<h2 class="alert alert-primary">Assign Case To Member</h2><br>
 	<input type="text" name="case_id" placeholder="Enter Case Id"><br> <br>
 	<input type="text" name="mem_id" placeholder="Enter Member Id"> <br> <br>
-	<input type="submit" value="Submit">
+	<input type="submit" class="btn btn-info" value="Submit">
 </form>
 <br><br>
 <?php 

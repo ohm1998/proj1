@@ -36,7 +36,8 @@ function html_table($data = array())
 	<title>Case Closed</title>
 </head>
 <body>
-<h1>Case Closed</h1>
+<br>
+<h1 class="alert alert-primary">Case Closed</h1><br>
 <?php 
 
 $query = "select sr as member_id,name as member_name,case_id,case_title,attended as Status,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id where rescue.attended=-1";

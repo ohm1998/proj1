@@ -26,7 +26,8 @@ function html_table($data = array())
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.dataTables.min.css">
 </head>
 <body>
-<h2>Lost Found Enquiries</h2>
+<br>
+<h2 class="alert alert-primary">Lost Found Enquiries</h2><br>
 <?php 
 
 

@@ -63,18 +63,20 @@ foreach($res as $key=>$r)
 
 echo html_table($res);
 ?>
-<h2>Enter Case Details:</h2>
+<br>
+<h2 class="alert alert-primary">Enter Case Details:</h2><br>
 <form action="case_details.php" method="POST" accept-charset="utf-8">
-	<input type="number" name="case_id" placeholder="Case Id" required>
-	<input type="number" step="0.01" min="1" name="charge" placeholder="Charge Incurred" required><br>
-    <label>Followup Date:</label><br>
+	<input type="number" name="case_id" placeholder="Case Id" required> <br><br>
+	<input type="number" step="0.01" min="1" name="charge" placeholder="Charge Incurred" required><br><br>
+    <label>Followup Date:</label>&nbsp
     <input type="radio" id="y" name="follow" value="yes"/> Yes
     <input type="radio" id="n"   name="follow" value="no" />No
 	<input type="date" name="followup" placeholder="Follow Up Date" id="follow_date" style="display: none;"><br> <br>
-	<textarea name="comments" placeholder="Extra Comments"></textarea>
-	<input type="submit" value="Submit">
+	<textarea name="comments" placeholder="Extra Comments"></textarea><br><br>
+	<input type="submit" value="Submit" class="btn btn-info">
 </form>
-<h2>Case Details</h2>
+<br><br>
+<h2 class="alert alert-primary">Case Details</h2><br>
 <?php 
 
 $q = "select * from rescue_case_followup";

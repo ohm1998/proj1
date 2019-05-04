@@ -1,5 +1,6 @@
 <div class="page-header">
-<h1>Add Member</h1>      
+<br>
+<h2 class="alert alert-primary">Add Member</h2> <br>    
 </div>
 <form action="./add_member.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 

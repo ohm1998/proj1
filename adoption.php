@@ -97,8 +97,7 @@
 							  <div class="overlay" >
 							    <div class="text top-right" >
 							    	<?php echo strtoupper($r['animal']); ?><br>
-							    	<?php echo $r['age']." YRS OLD"; ?><br>
-							    	<?php echo strtoupper($r['gender']); ?><br>
+							    	<?php echo $r['age']." YRS ".strtoupper($r['gender']); ?><br>
 							    	<?php echo strtoupper($r['breed'])."(Breed)"; ?>
 							    </div>
 							  </div>
@@ -110,7 +109,7 @@
 				</div>
 				
 					
-
+			</section>	
 			<!-- Start calltoaction Area -->
 			<section class="calltoaction-area section-gap relative">
 				<div class="container">
@@ -129,7 +128,7 @@
 				</div>	
 			</section>
 			<!-- End calltoaction Area -->													
-				
+			
 			<!-- start footer Area -->		
 			<footer class="footer-area">
 				<div class="container">
@@ -207,8 +206,8 @@
 					<div class="container">
 						<div class="row footer-bottom d-flex justify-content-between">
 							<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://sleeksites.in" target="_blank">Sleeksites</a>
-</p>
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://sleeksites.in" target="_blank">Sleeksites</a>
+					</p>
 							<div class="col-lg-4 col-sm-6 footer-social">
 								<a href="#"><i class="fa fa-facebook"></i></a>
 								<a href="#"><i class="fa fa-twitter"></i></a>

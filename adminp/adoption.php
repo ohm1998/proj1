@@ -109,8 +109,8 @@ foreach ($res as $key => $value)
 	<div class="form-group">
 		<input type="text" class="form-control" name="breed" placeholder="Breed" required>
 	</div>
-	<div class="custom-file">
-	    <input type="file" class="form-control custom-file-input" name="adopt_photo" aria-describedby="inputGroupFileAddon01">
+    <div class="custom-file">
+	    <input type="file" class="custom-file-input" name="adopt_photo" aria-describedby="inputGroupFileAddon01">
 	    <label class="custom-file-label" for="inputGroupFile01">Upload Photo</label>
     </div>
 	<div class="form-group">
