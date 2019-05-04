@@ -51,7 +51,8 @@ else
         <a class="list-group-item list-group-item-action bg-light adopt_form">Adoption</a>
         <a class="list-group-item list-group-item-action bg-light rescue_unattended">Rescue Unattended</a>
         <a class="list-group-item list-group-item-action bg-light case_details">Enter Case Details</a>
-        <a class="list-group-item list-group-item-action bg-light">Status</a>
+        <a class="list-group-item list-group-item-action bg-light case_closed">Closed Cases</a>
+        <a class="list-group-item list-group-item-action bg-light donation">Donations</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -114,6 +115,11 @@ else
   $(".case_details").click(function()
   {
     $(".load").load("./case_details.php");
+    
+  });
+  $(".case_closed").click(function()
+  {
+    $(".load").load("./case_closed.php");
     
   });
 	$(".mem_list").click(function()

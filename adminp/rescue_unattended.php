@@ -77,9 +77,26 @@ function html_table3($data = array())
 <h1>Case List:</h1>
 <?php 
 
-$sql = "select * from rescue";
+$sql = "select * from rescue where attended=1 or attended=0";
 
 $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
+
+foreach($res as $key=>$r)
+{
+    if($r['attended']==-1)
+    {
+        $res[$key]['attended'] = "Case Closed"." CC";
+    }
+    else if($r['attended']==0)
+    {
+        $res[$key]['attended'] = "Unattended"." UA";
+    }
+    else if($r['attended']==1)
+    {
+        $res[$key]['attended'] = "Attended"." assigned";
+    }
+}
+
 
 echo html_table($res);
 
@@ -119,7 +136,6 @@ echo html_table3($res);
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript">
   $(document).ready( function () {

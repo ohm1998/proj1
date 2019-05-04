@@ -28,6 +28,12 @@ if(isset($_POST['case_id']))
 {
 	print_r($_POST);
     extract($_POST);
+    if($follow=="no")
+    {
+        $followup="-1";
+        $query = "update rescue set attended=-1 where case_id=".$case_id;
+        mysqli_query($con,$query);
+    }
     $q = "INSERT INTO `rescue_case_followup`( `case_id`, `cost_incurred`, `follow_up_date`, `extra_comments`) VALUES ($case_id,$charge,'$followup','$comments')";
     echo $q;
     mysqli_query($con,$q);
@@ -41,8 +47,9 @@ if(isset($_POST['case_id']))
 	<title>Case</title>
 </head>
 <body>
+    <br>
 <?php 
-$query = "select sr as member_id,name as member_name,case_id,case_title,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id";
+$query = "select sr as member_id,name as member_name,case_id,case_title,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id where rescue.attended=1";
 
 $res = mysqli_fetch_all(mysqli_query($con,$query),MYSQLI_ASSOC);
 
@@ -61,15 +68,25 @@ echo html_table($res);
 	<input type="number" name="case_id" placeholder="Case Id" required>
 	<input type="number" step="0.01" min="1" name="charge" placeholder="Charge Incurred" required><br>
     <label>Followup Date:</label><br>
-	<input type="date" name="followup" placeholder="Follow Up Date"><br> <br>
+    <input type="radio" id="y" name="follow" value="yes"/> Yes
+    <input type="radio" id="n"   name="follow" value="no" />No
+	<input type="date" name="followup" placeholder="Follow Up Date" id="follow_date" style="display: none;"><br> <br>
 	<textarea name="comments" placeholder="Extra Comments"></textarea>
 	<input type="submit" value="Submit">
 </form>
-<h2>Member Details</h2>
+<h2>Case Details</h2>
 <?php 
 
 $q = "select * from rescue_case_followup";
 $res = mysqli_fetch_all(mysqli_query($con,$q),MYSQLI_ASSOC);
+
+foreach($res as $key=>$r)
+{
+    if($r['follow_up_date']=="-1")
+    {
+        $res[$key]['follow_up_date'] = "Case Closed";
+    }
+}
 
 echo html_table($res);
 ?>
@@ -85,6 +102,14 @@ echo html_table($res);
     	responsive: true
     });
 } );
+  $("#y").click(function()
+  {
+    $("#follow_date").show();
+  });
+  $("#n").click(function()
+  {
+    $("#follow_date").hide();
+  });
 </script>
 </body>
 </html>
