@@ -36,12 +36,17 @@ function html_table($data = array())
 	<title>Case Closed</title>
 </head>
 <body>
+<h1>Case Closed</h1>
 <?php 
 
-$query = "select sr as member_id,name as member_name,case_id,case_title,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id where rescue.attended=-1";
+$query = "select sr as member_id,name as member_name,case_id,case_title,attended as Status,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id where rescue.attended=-1";
 
 $res = mysqli_fetch_all(mysqli_query($con,$query),MYSQLI_ASSOC);
 
+foreach($res as $key=>$r)
+{
+	$res[$key]['Status'] = "Case Closed";	
+}
 echo html_table($res);
 ?>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

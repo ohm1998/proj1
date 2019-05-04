@@ -23,7 +23,7 @@ function html_table($data = array())
         }
         $rows[] = "<tr>" . implode('', $cells) . "</tr>";
     }
-    return "<table class='table hover  table-stripped table-bordered'>" ."<thead><tr> <th>Id</th><th>Case Title</th> <th>Date</th> <th>Address</th>  <th>Contact</th> <th>Contact Name</th> <th>Problem</th> <th>Attended</th> </tr></thead><tbody>". implode('', $rows). "</tbody></table>";
+    return "<table class='table hover  table-stripped table-bordered'>" ."<thead><tr> <th>Id</th><th>Case Title</th> <th>Date</th> <th>Address</th>  <th>Contact</th> <th>Contact Name</th> <th>Problem</th> <th>Attended</th> <th>Photo</th> </tr></thead><tbody>". implode('', $rows). "</tbody></table>";
 }
 
 function html_table2($data = array())
@@ -75,6 +75,7 @@ function html_table3($data = array())
 </head>
 <body>
 <h1>Case List:</h1>
+
 <?php 
 
 $sql = "select * from rescue where attended=1 or attended=0";
@@ -95,6 +96,7 @@ foreach($res as $key=>$r)
     {
         $res[$key]['attended'] = "Attended"." assigned";
     }
+    $res[$key]['photo_location'] = '<img src="'.$res[$key]['photo_location'].'" alt="animal pic" height=250 width=200>' ;
 }
 
 

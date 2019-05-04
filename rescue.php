@@ -84,7 +84,7 @@
 					<h2>Rescue:</h2><br>
 					<div class="row">
 						<div class="col-lg-12">
-							<form class="form-area" id="contactForm" class="contact-form text-right" method="post">
+							<form class="form-area" action="./rescue_req.php" id="contactForm" class="contact-form text-right" method="post" enctype="multipart/form-data">
 								<div class="row">
 								<div class="col-lg-6 form-group">
 											<input name="case_title" placeholder="Enter case title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Case Title'" class="cl common-input mb-20 form-control" required="" type="text" id="case_title">
@@ -98,12 +98,13 @@
 											<textarea class="cl common-textarea form-control" name="animal_problem" placeholder="Problem of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Problem of the animal'" required
 											id="animal_problem"></textarea >	
 										</div>
-								</div>
-							</form>
+										<input type="file" name="photo" required>
 										<div class="col-lg-12 d-flex justify-content-between">
 											<div class="alert-msg" style="text-align: left;"></div>
 											<button class="genric-btn primary circle" id="submit" style="float: right;">Add Rescue Data</button>		
 										</div>
+								</div>
+							</form>
 						</div>	
 					</div>
 				</div>
@@ -156,10 +157,10 @@
 	req.onreadystatechange = meth;
 	req.open("GET",url,true);
 	req.send();
-});*/
+});*//*
 $('#submit').on("click",function(){
 	$.ajax({    	
-		type:'GET',
+		type:'POST',
 		url: "rescue_req.php?case_title="+$("#case_title").val()
 	    	+"&contact_name="+$('#contact_name').val()
 	    	+"&contact="+$('#contact').val()
@@ -167,13 +168,14 @@ $('#submit').on("click",function(){
 	    	+"&animal_problem="+$("#animal_problem").val(),
 	    	success:function(response)
 	    	{
-	    		alert("Saved!");
+	    	/*	alert("Saved!");
 	    		$(".cl").each(function()
 	    		{
 	    			this.value= "";
-	    		});
+	    		});*/
+	    		console.log(response);
 	    	}
 	});
-});
+});*/
 </script>
 </html>
