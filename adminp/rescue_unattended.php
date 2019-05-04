@@ -2,9 +2,13 @@
 require("./connection.php");
 session_start();
 $_SESSION['curr_page_class']='.rescue_unattended';
+
 if(isset($_POST['mem_id']) && isset($_POST['case_id']))
 {
-	print_r($_POST);
+    extract($_POST);
+    $q = "insert into rescue_case_mem(`rescue_case_id`,`mem_id`) values($case_id,$mem_id)";
+    mysqli_query($con,$q);
+    header("Location: ./home.php");
 }
 
 function html_table($data = array())
@@ -30,7 +34,30 @@ function html_table2($data = array())
         }
         $rows[] = "<tr>" . implode('', $cells) . "</tr>";
     }
+
     return "<table class='table2 hover table-stripped table-bordered'>" ."<thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th> <th>Contact</th>  </tr></thead><tbody>". implode('', $rows). "</tbody></table>";
+}
+
+
+function html_table3($data = array())
+{
+    $rows = array();
+    foreach ($data as $row) {
+        $cells = array();
+        foreach ($row as $cell) {
+            $cells[] = "<td>{$cell}</td>";
+        }
+        $rows[] = "<tr>" . implode('', $cells) . "</tr>";
+    }
+
+    $s = "<table class='table2 hover table-stripped table-bordered'>" ."<thead><tr>"; 
+
+    foreach($data[0] as $key=>$val)
+    {
+        $s = $s."<th>".$key."</th>";
+    }
+    $s = $s."</tr></thead><tbody>";
+    return $s. implode('', $rows). "</tbody></table>";
 }
 
 
@@ -62,12 +89,30 @@ echo html_table($res);
 		echo html_table2($r); 
 	?>
 </div>
-<form method="POST" action="">
+<form method="POST" action="rescue_unattended.php">
 	<h1>Assign Case To Member</h1>
 	<input type="text" name="case_id" placeholder="Enter Case Id"><br> <br>
 	<input type="text" name="mem_id" placeholder="Enter Member Id"> <br> <br>
 	<input type="submit" value="Submit">
 </form>
+<br><br>
+<?php 
+
+$query = "select sr as member_id,name as member_name,case_id,case_title,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id";
+
+$res = mysqli_fetch_all(mysqli_query($con,$query),MYSQLI_ASSOC);
+
+foreach($res as $key=>$r)
+{
+    unset($res[$key]['attended']);
+    unset($res[$key]['id']);
+    unset($res[$key]['rescue_case_id']);
+    unset($res[$key]['case_date']);
+}
+
+echo html_table3($res);
+
+ ?>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

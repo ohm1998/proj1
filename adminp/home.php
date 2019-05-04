@@ -50,7 +50,7 @@ else
         <a class="list-group-item list-group-item-action bg-light mem_list">Member List</a>
         <a class="list-group-item list-group-item-action bg-light adopt_form">Adoption</a>
         <a class="list-group-item list-group-item-action bg-light rescue_unattended">Rescue Unattended</a>
-        <a class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a class="list-group-item list-group-item-action bg-light case_details">Enter Case Details</a>
         <a class="list-group-item list-group-item-action bg-light">Status</a>
       </div>
     </div>
@@ -111,6 +111,11 @@ else
     $(".load").load("./adoption.php");
     
   });
+  $(".case_details").click(function()
+  {
+    $(".load").load("./case_details.php");
+    
+  });
 	$(".mem_list").click(function()
 	{
 		$(".load").html("<br><br><h2 class='alert alert-primary'>Member Details:</h2><table class='table hover stripe row-border'><thead><tr> <th>ID</th> <th>Name</th><th>DOB</th> <th>Age</th>    <th>Address</th> <th>Contact</th>    <th>Pan Id No</th>    <th>Email</th>    <th>Occupation/College</th>    <th>School</th><th>Current Club</th>    <th>Society</th>    <th>Status</th>    <th>Prev Mem No</th>    <th>Mem Duration</th>    <th>Areas Of Interest</th>  <th>Photo</th> <th>Timestamp</th> </tr></thead><tbody></tbody></table>");
@@ -134,6 +139,15 @@ else
 	console.log(a);
 	$(a).click();
 </script>
+<!-- <script type="text/javascript">
+  function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+if(!isMobileDevice()) 
+{
+  $("#menu-toggle").click();
+}
+</script> -->
 </body>
 
 </html>
