@@ -86,23 +86,23 @@
 							<form class="form-area" id="contactForm" class="contact-form text-right" method="post">
 								<div class="row">
 								<div class="col-lg-6 form-group">
-											<input name="case_title" placeholder="Enter case title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Case Title'" class="common-input mb-20 form-control" required="" type="text" id="case_title">
-											<input name="contact_name" placeholder="Enter Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'" class="common-input mb-20 form-control" required="" type="text" id="contact_name">
-											<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact" id="contact">
+											<input name="case_title" placeholder="Enter case title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Case Title'" class="cl common-input mb-20 form-control" required="" type="text" id="case_title">
+											<input name="contact_name" placeholder="Enter Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'" class="cl common-input mb-20 form-control" required="" type="text" id="contact_name">
+											<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="cl common-input mb-20 form-control" required="" type="contact" id="contact">
 										</div>
 										<div class="col-lg-6 form-group">
-											<textarea class="common-textarea form-control" name="animal_address" placeholder="Address of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address of the animal'" required
+											<textarea class="cl common-textarea form-control" name="animal_address" placeholder="Address of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address of the animal'" required
 											 id="animal_address"></textarea>
 											 <br>				
-											<textarea class="common-textarea form-control" name="animal_problem" placeholder="Problem of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Problem of the animal'" required
+											<textarea class="cl common-textarea form-control" name="animal_problem" placeholder="Problem of the animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Problem of the animal'" required
 											id="animal_problem"></textarea >	
 										</div>
+								</div>
+							</form>
 										<div class="col-lg-12 d-flex justify-content-between">
 											<div class="alert-msg" style="text-align: left;"></div>
 											<button class="genric-btn primary circle" id="submit" style="float: right;">Add Rescue Data</button>		
 										</div>
-								</div>
-							</form>
 						</div>	
 					</div>
 				</div>
@@ -165,7 +165,14 @@ $('#submit').on("click",function(){
 	    	+"&contact="+$('#contact').val()
 	    	+"&animal_address="+$("#animal_address").val()
 	    	+"&animal_problem="+$("#animal_problem").val(),
-	    	success:function(response){alert("Saved!")}
+	    	success:function(response)
+	    	{
+	    		alert("Saved!");
+	    		$(".cl").each(function()
+	    		{
+	    			this.value= "";
+	    		});
+	    	}
 	});
 });
 </script>
