@@ -8,6 +8,8 @@ if(isset($_POST['mem_id']) && isset($_POST['case_id']))
     extract($_POST);
     $q = "insert into rescue_case_mem(`rescue_case_id`,`mem_id`) values($case_id,$mem_id)";
     mysqli_query($con,$q);
+    $query = "update rescue set attended=1 where case_id=".$_POST['case_id'];
+    mysqli_query($con,$query);
     header("Location: ./home.php");
 }
 
