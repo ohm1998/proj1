@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2019 at 02:36 PM
+-- Generation Time: May 06, 2019 at 03:34 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -25,28 +25,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rescue`
+-- Table structure for table `foster`
 --
 
-CREATE TABLE `rescue` (
-  `case_id` varchar(100) NOT NULL DEFAULT '',
-  `case_title` text NOT NULL,
-  `case_date` text NOT NULL,
-  `case_address` text NOT NULL,
-  `case_contact` text NOT NULL,
-  `contact_name` text NOT NULL,
-  `case_problem` text NOT NULL
+CREATE TABLE `foster` (
+  `name` text NOT NULL,
+  `email` text NOT NULL,
+  `contact` text NOT NULL,
+  `number` int(10) NOT NULL,
+  `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `foster`
 --
 
---
--- Indexes for table `rescue`
---
-ALTER TABLE `rescue`
-  ADD PRIMARY KEY (`case_id`);
+INSERT INTO `foster` (`name`, `email`, `contact`, `number`, `address`) VALUES
+('sahil', 'jishanta@gmail.com', '9512885899', 10, 'Nan');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
