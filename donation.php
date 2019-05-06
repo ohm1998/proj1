@@ -87,30 +87,49 @@
 						<?php  
 						require("./connection.php");
 
-						$sql = "select * from adoption where adopt_status=0;";
+						$sql = "select sum(rescue_case_followup.cost_incurred) as cost,rescue_case_followup.case_id as case_id,photo_location from rescue join rescue_case_followup on rescue.case_id=rescue_case_followup.case_id group by rescue_case_followup.case_id;";
 						$res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
-						foreach($res as $r)
+						foreach($res as $key=>$r)
 						{ ?>
+							<?php 
+									$q = "select sum(amount) as amount from donation where case_id=".$r['case_id']." and payment=1";
+									$a = mysqli_fetch_all(mysqli_query($con,$q),MYSQLI_ASSOC);
+									$tot_donation = $a[0]['amount'];
+									echo $tot_donation."<br>";
+									echo $r['cost'];
+									if($tot_donation=="")
+									{
+										$perc=0;
+									}
+									else
+									{
+										$perc = ($tot_donation/$r['cost'])*100;
+									}
+									$perc = intval($perc);
+									if($tot_donation>=$r['cost'])
+									{
+										continue;
+									}
+								?>
 						<div class="col-lg-3 col-md-6 pet_click"  style="cursor:pointer;">
 							<div class="single-cat-list">
-							  <img src="<?php echo "adminp".$r['photo_location']; ?>" alt="" style="height: 250px; width: 350px;"  class="img-fluid">
+							  <img src="<?php echo $r['photo_location']; ?>" alt="" style="height: 250px; width: 350px;"  class="img-fluid">
 							  <div class="overlay" >
 							    <div class="text top-right" >
-							    	<?php echo strtoupper($r['animal']); ?><br>
-							    	<?php echo $r['age']." YRS ".strtoupper($r['gender']); ?><br>
-							    	<?php echo strtoupper($r['breed'])."(Breed)"; //<?php echo $r['sr']?>
+							    	<?php echo "Cost: ".strtoupper($r['cost']); ?><br>
 							    </div>
 							  </div>
 							</div>
 							<center>
 								<b>Donation Status</b>
+								
 							</center>
 							<div class="progress">
-							  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">70% Collected</div>
+							  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <?php echo $perc+1; ?>%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><?php echo $perc; ?>% Collected</div>
 							</div>
 							<br>
 							<center>
-								<button class="genric-btn primary circle" data-toggle="modal" data-target="#ModalCenter" onclick="fillInput(this)" name="<?php echo $r['sr']?>">Donate</button><br><br>
+								<button class="genric-btn primary circle" data-toggle="modal" data-target="#ModalCenter" onclick="fillInput(this)" name="<?php echo $r['case_id']?>">Donate</button><br><br>
 							</center>
 						</div>
 						<?php }
@@ -249,6 +268,8 @@
 							<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
 
 							<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact">
+
+							<input name="amount" placeholder="Enter Donation Amount" type="number" step="0.1" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="">
 
 							<input type="hidden" name="anim_sr" id="anim_sr" value="">
 						</div>
