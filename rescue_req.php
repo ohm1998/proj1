@@ -40,5 +40,4 @@ $sql_add_query = "insert into rescue (`case_title`, `case_date`, `case_address`,
 echo $sql_add_query;
 move_uploaded_file($_FILES['photo']['tmp_name'], "adminp/".$target);
 $con->query($sql_add_query);
-echo ("The Record was saved");
 ?>

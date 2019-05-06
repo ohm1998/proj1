@@ -157,7 +157,7 @@
 	req.onreadystatechange = meth;
 	req.open("GET",url,true);
 	req.send();
-});*//*
+});*/
 $('#submit').on("click",function(){
 	$.ajax({    	
 		type:'POST',
@@ -168,14 +168,13 @@ $('#submit').on("click",function(){
 	    	+"&animal_problem="+$("#animal_problem").val(),
 	    	success:function(response)
 	    	{
-	    	/*	alert("Saved!");
+	    		alert("Saved!");
 	    		$(".cl").each(function()
 	    		{
 	    			this.value= "";
-	    		});*/
-	    		console.log(response);
+	    		});
 	    	}
 	});
-});*/
+});
 </script>
 </html>

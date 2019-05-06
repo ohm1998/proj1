@@ -103,28 +103,28 @@ $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 				</div>
 				<div class="row">
 						<div class="col-lg-12">
-							<form class="form-area" id="contactForm" class="contact-form text-right" action="./foster_details.php" method="post">
+							<form class="form-area" id="contactForm" class="contact-form text-right">
 								<div class="row">	
 									<div class="col-lg-6 form-group">
-										<input name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'" class="common-input mb-20 form-control" required="" type="text">
+										<input name="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'" class="common-input mb-20 form-control" required="" type="text" id="name" class="cl">
 									
-										<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
+										<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email" id="email" class="cl">
 
-										<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact">
+										<input name="contact" placeholder="Enter contact number" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter contact number'" class="common-input mb-20 form-control" required="" type="contact" id="contact" class="cl">
 
-										<input name="days" placeholder="Enter number of days for fostering"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter number of days for fostering'" class="common-input mb-20 form-control" required="" type="number">
+										<input id="number" name="days" placeholder="Enter number of days for fostering"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter number of days for fostering'" class="common-input mb-20 form-control" required="" type="number" class="cl">
 
 										<input type="hidden" name="anim_sr" value="<?php echo $_GET['sr']; ?>">
 									</div>
 									<div class="col-lg-6 form-group">
-										<textarea class="common-textarea form-control" name="address" placeholder="Enter address of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter address of animal'" required=""></textarea>						
-									</div>
-									<div class="col-lg-12 d-flex justify-content-between">
-										<div class="alert-msg" style="text-align: left;"></div>
-										<button class="genric-btn primary circle" style="float: right;">Submit</button>		
+										<textarea id="address" class="common-textarea form-control" name="address" placeholder="Enter address of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter address of animal'" required="" class="cl"></textarea>						
 									</div>
 								</div>
-							</form>	
+							</form>
+							<div class="col-lg-12 d-flex justify-content-between">
+								<div class="alert-msg" style="text-align: left;"></div>
+								<button id="submit" class="genric-btn primary circle" style="float:right;">Submit</button>
+							</div>
 						</div>
 				</div>
 			</div>	
@@ -254,6 +254,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="js/owl.carousel.min.js"></script>						
 		<script src="js/jquery.nice-select.min.js"></script>							
 		<script src="js/mail-script.js"></script>	
-		<script src="js/main.js"></script>	
+		<script src="js/main.js"></script>
+		<script type="text/javascript">
+			$('#submit').on("click",function()
+			{
+				$.ajax({    	
+					type:'POST',
+					url: "foster_details.php?name="+$('#name').val()
+							+"&email="+$('#email').val()+"&contact"+$('#contact').val()
+							+"&num="+$('#number').val()+"&address"+$('#address').val(),
+				    	success:function(response)
+				    	{
+				    		alert("Saved!");
+				    		$(".cl").each(function()
+				    		{
+				    			this.value= "";
+				    		});
+				    	}
+					});
+			});
+		</script>
 	</body>
 </html>
