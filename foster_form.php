@@ -21,7 +21,7 @@ $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 	
 	<meta charset="UTF-8">
 	
-	<title>Adoption</title>
+	<title>Foster Form</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -47,7 +47,7 @@ $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 		    <div class="container main-menu">
 		    	<div class="row align-items-center justify-content-between d-flex">
 			      <div id="logo">
-			        <a href="index.html"><h3 class="title_nav">Dog Adoption</h3></a>
+			        <a href="index.html"><h3 class="title_nav">NGO</h3></a>
 			      </div>
 			      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
@@ -261,11 +261,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				$.ajax({    	
 					type:'POST',
 					url: "foster_details.php?name="+$('#name').val()
-							+"&email="+$('#email').val()+"&contact"+$('#contact').val()
-							+"&num="+$('#number').val()+"&address"+$('#address').val(),
+							+"&email="+$('#email').val()+"&contact="+$('#contact').val()
+							+"&num="+$('#number').val()+"&address="+$('#address').val(),
 				    	success:function(response)
 				    	{
 				    		alert("Saved!");
+				    		console.log(response);
 				    		$(".cl").each(function()
 				    		{
 				    			this.value= "";

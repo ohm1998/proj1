@@ -14,7 +14,7 @@
 		
 		<meta charset="UTF-8">
 		
-		<title>Adoption</title>
+		<title>Donation</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -44,7 +44,7 @@
 			    <div class="container main-menu">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><h3 class="title_nav">Dog Adoption</h3></a>
+				        <a href="index.html"><h3 class="title_nav">NGO</h3></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
