@@ -45,7 +45,7 @@ if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
 
 <body>
 
-  <div class="d-flex" id="wrapper">
+  <div class="d-flex toggled" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
