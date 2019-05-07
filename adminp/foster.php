@@ -22,7 +22,7 @@ $_SESSION['curr_page_class']='.foster';
 </head>
 <body>
 <h2 class="alert alert-primary">Add Animal For Foster</h2>
-<form action="add_foster.php" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="form-inline">
+<form action="add_foster.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data" class="form-inline">
 	<div class="form-group">
 		<input type="text" class="form-control" name="animal" placeholder="Animal" required="">
 	</div>
