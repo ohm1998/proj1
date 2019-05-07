@@ -10,6 +10,12 @@ else
 	$curr_page_class = "'".".home"."'";
 }
 
+if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
+{
+  header("Location: ./index.php");
+}
+
+
 
 ?>
 
@@ -46,12 +52,13 @@ else
       <div class="sidebar-heading">Admin</div>
       <div class="list-group list-group-flush">
         <a class="list-group-item list-group-item-action bg-light home">Home</a>
-        <a class="list-group-item list-group-item-action bg-light add_member">Add Member</a>
+        <!-- <a class="list-group-item list-group-item-action bg-light add_member">Add Member</a> -->
         <a class="list-group-item list-group-item-action bg-light mem_list">Member List</a>
         <a class="list-group-item list-group-item-action bg-light adopt_form">Adoption</a>
         <a class="list-group-item list-group-item-action bg-light rescue_unattended">Rescue Unattended</a>
         <a class="list-group-item list-group-item-action bg-light case_details">Enter Case Details</a>
         <a class="list-group-item list-group-item-action bg-light case_closed">Closed Cases</a>
+        <a class="list-group-item list-group-item-action bg-light foster">Foster Animals</a>
         <a class="list-group-item list-group-item-action bg-light donation">Donations</a>
       </div>
     </div>
@@ -66,7 +73,7 @@ else
 
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="./logout.php">Logout<span class="sr-only">(current)</span></a>
             </li>
           </ul>
       </nav>
@@ -98,10 +105,10 @@ else
   </script>
 
 <script type="text/javascript">
-	$(".add_member").click(function()
+	/*$(".add_member").click(function()
 	{
 		$(".load").load("./member.php");
-	});
+	});*/
 	$(".home").click(function()
 	{
 		$(".load").load("./home_opt.php");
@@ -120,6 +127,16 @@ else
   $(".case_closed").click(function()
   {
     $(".load").load("./case_closed.php");
+    
+  });
+  $(".donation").click(function()
+  {
+    $(".load").load("./donation.php");
+    
+  });
+  $(".foster").click(function()
+  {
+    $(".load").load("./foster.php");
     
   });
 	$(".mem_list").click(function()

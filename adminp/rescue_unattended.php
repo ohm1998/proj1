@@ -98,7 +98,7 @@ foreach($res as $key=>$r)
     {
         $res[$key]['attended'] = "Attended"." assigned";
     }
-    $res[$key]['photo_location'] = '<img src="'.$res[$key]['photo_location'].'" alt="animal pic" height=250 width=200>' ;
+    $res[$key]['photo_location'] = '<img src="'.$res[$key]['photo_location'].'" alt="animal pic" height=200 width=180>' ;
 }
 
 
@@ -122,6 +122,7 @@ echo html_table($res);
 	<input type="submit" class="btn btn-info" value="Submit">
 </form>
 <br><br>
+<h2 class="alert alert-primary">Case Assigned To Member</h2><br>
 <?php 
 
 $query = "select sr as member_id,name as member_name,case_id,case_title,case_address,case_contact,contact_name,case_problem from rescue join rescue_case_mem on rescue_case_mem.rescue_case_id=rescue.case_id join member on member.sr = rescue_case_mem.mem_id";
