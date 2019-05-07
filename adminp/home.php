@@ -59,6 +59,7 @@ if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
         <a class="list-group-item list-group-item-action bg-light case_details">Enter Case Details</a>
         <a class="list-group-item list-group-item-action bg-light case_closed">Closed Cases</a>
         <a class="list-group-item list-group-item-action bg-light foster">Foster Animals</a>
+        <a class="list-group-item list-group-item-action bg-light foster_enquiry">Foster Enquiry</a>
         <a class="list-group-item list-group-item-action bg-light donation">Donations</a>
       </div>
     </div>
@@ -137,6 +138,11 @@ if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
   $(".foster").click(function()
   {
     $(".load").load("./foster.php");
+    
+  });
+   $(".foster_enquiry").click(function()
+  {
+    $(".load").load("./foster_enquiry.php");
     
   });
 	$(".mem_list").click(function()

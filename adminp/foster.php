@@ -35,6 +35,14 @@ if(isset($_POST['del_user']))
  }
 
 
+if(isset($_POST['change_stat']))
+ {
+  $sql = "UPDATE foster_animal_details SET foster_status = (CASE foster_status WHEN 1 THEN 0 ELSE 1 END) where id='".$_POST['change_stat']."'";
+  mysqli_query($con,$sql);
+  echo $sql;
+  header("Location: ./home.php");
+ }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,6 +90,14 @@ $q = "select * from foster_animal_details";
 $res = mysqli_fetch_all(mysqli_query($con,$q),MYSQLI_ASSOC);
 foreach($res as $key=>$r)
 {
+  if($res[$key]['foster_status'])
+  {
+    $res[$key]['foster_status']="Fostered 1FF";
+  }
+  else
+  {
+    $res[$key]['foster_status'] = "UnFostered 0FF";
+  }
 	$res[$key]['Photo'] = "<img src='.".$res[$key]['photo_location']."' height=100 width=100>";
 	unset($res[$key]['photo_location']);
 }
@@ -92,6 +108,11 @@ echo  html_table($res);
      <form action="./foster.php" method="POST" accept-charset="utf-8">
           <input type="text" name="del_user" placeholder="Id Of Animal"><br><br>
           <input type="submit" value="Delete">
+        </form><br>
+        <h2 class="alert alert-primary">Change Foster Status:</h2>
+     <form action="./foster.php" method="POST" accept-charset="utf-8">
+          <input type="text" name="change_stat" placeholder="Id Of Animal"><br><br>
+          <input type="submit" value="Change">
         </form><br>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

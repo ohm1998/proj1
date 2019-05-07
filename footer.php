@@ -1,4 +1,29 @@
-<div class="container">
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="css/linearicons.css">
+			<link rel="stylesheet" href="css/font-awesome.min.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/nice-select.css">							
+			<link rel="stylesheet" href="css/animate.min.css">
+			<link rel="stylesheet" href="css/owl.carousel.css">
+			<link rel="stylesheet" href="css/main.css">
+			<style type="text/css">
+				.title_nav
+				{
+					color:white;
+				}
+			</style>
+</head>
+<body>
+<footer class="footer-area">
+				<div class="container">
 					<div class="row pt-120 pb-80">
 						<div class="col-lg-4 col-md-6">
 							<div class="single-footer-widget">
@@ -72,7 +97,7 @@
 					<div class="container">
 						<div class="row footer-bottom d-flex justify-content-between">
 							<p class="col-lg-8 col-sm-6 footer-text m-0 text-white">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://sleeksites.in" target="_blank">SleekSites</a></p>
+Copyright &copy;<div class="year"></div><script>var year = new Date().getFullYear(); $(".year").html(year);</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://sleeksites.in" target="_blank">SleekSites</a></p>
 							<div class="col-lg-4 col-sm-6 footer-social">
 								<a href="#"><i class="fa fa-facebook"></i></a>
 								<a href="#"><i class="fa fa-twitter"></i></a>
@@ -82,3 +107,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						</div>						
 					</div>
 				</div>
+			</footer>
+</body>
+</html>
