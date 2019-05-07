@@ -44,19 +44,18 @@
 			    <div class="container main-menu">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><h3 class="title_nav">Dog Adoption</h3></a>
+				        <!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
+				        <h3 class="title_nav">NGO</h3>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About Us</a></li>
-				          <li><a href="dogs.html">Dogs</a></li>
-				          <li><a href="adoption.php">Adoption</a></li>
 				          <li><a href="lost_found1.php">Lost and Found</a></li>
-
-				          <li><a href="membership.php">Membership</a></li>
-				          <li><a href="contact.html">Contact</a></li>
-				          			              
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="foster.php">Foster</a></li>
+				          <li><a href="membership.php">Volunteer</a></li>
+				          <li><a href="rescue.php">Rescue</a></li>
+				          <li><a href="donation.php">Sponsor</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
@@ -87,11 +86,11 @@
 						<?php  
 						require("./connection.php");
 
-						$sql = "select * from adoption where adopt_status=0;";
+						$sql = "select * from foster_animal_details where foster_status=0;";
 						$res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 						foreach($res as $r)
 						{ ?>
-						<div class="col-lg-3 col-md-6 pet_click" onclick="pet_adopt(<?php echo $r['sr']; ?>)" style="cursor:pointer;">
+						<div class="col-lg-3 col-md-6 pet_click" onclick="pet_adopt(<?php echo $r['id']; ?>)" style="cursor:pointer;">
 							<div class="single-cat-list">
 							  <img src="<?php echo "adminp".$r['photo_location']; ?>" alt="" style="height: 250px; width: 350px;"  class="img-fluid">
 							  <div class="overlay" >

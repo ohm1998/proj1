@@ -14,7 +14,7 @@
 		
 		<meta charset="UTF-8">
 		
-		<title>Adoption / Lost And Found</title>
+		<title>Volunteer Form</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -44,17 +44,18 @@
 			    <div class="container main-menu">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><h3 class="title_nav">Dog Adoption</h3></a>
+				        <!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
+				        <a href="./"><h3 class="title_nav">NGO</h3></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About Us</a></li>
-				          <li><a href="dogs.html">Dogs</a></li>
-				          <li><a href="adoption.php">Adoption</a></li>
 				          <li><a href="lost_found1.php">Lost and Found</a></li>
-				          <li><a href="membership.php">Membership</a></li>
-				          <li><a href="contact.html">Contact</a></li>
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="foster.php">Foster</a></li>
+				          <li><a href="membership.php">Volunteer</a></li>
+				          <li><a href="rescue.php">Rescue</a></li>
+				          <li><a href="donation.php">Sponsor</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
@@ -87,35 +88,35 @@
 
 								<div class="form-group">
 							  		<label for="name">Name:</label>
-								  	<input type="text" class="form-control" name="name">
+								  	<input type="text" class="form-control" name="name" required> 
 								</div>
 								<div class="custom-file">
-								    <input type="file" class="custom-file-input" name="photo" aria-describedby="inputGroupFileAddon01">
+								    <input type="file" class="custom-file-input" name="photo" aria-describedby="inputGroupFileAddon01" required>
 								    <label class="custom-file-label" for="inputGroupFile01">Upload Photo</label>
 							    </div>
 								<div class="form-group">
 							  		<label for="dob"><br>Date Of Birth:</label>
-								  	<input type="date" class="form-control" name="dob">
+								  	<input type="date" class="form-control" name="dob" required>
 								</div>
 								<div class="form-group">
 							  		<label for="age">Age</label>
-								  	<input type="number" class="form-control" name="age">
+								  	<input type="number" class="form-control" name="age" required>
 								</div>
 								<div class="form-group">
 							  		<label for="address">Address:</label>
-								  	<textarea class="form-control" name="address"></textarea>
+								  	<textarea class="form-control" name="address" required></textarea>
 								</div>
 								<div class="form-group">
 							  		<label for="contact">Contact:</label>
-								  	<input type="text" class="form-control" name="contact">
+								  	<input type="text" class="form-control" name="contact" required>
 								</div>
 								<div class="form-group">
 							  		<label for="panid">Pan Id No:</label>
-								  	<input type="text" class="form-control" name="panid">
+								  	<input type="text" class="form-control" name="panid" required>
 								</div>
 								<div class="form-group">
 							  		<label for="email">Email:</label>
-								  	<input  type="email" name="email" class="form-control" >
+								  	<input  type="email" name="email" class="form-control" required>
 								</div>
 								<div class="form-group">
 							  		<label for="occ">Occupation/Qualification(Mention Stream & Semester):</label>
@@ -156,14 +157,14 @@
 										</thead>
 										<tbody>
 											<tr onclick="document.getElementById('member1').checked = true;">
-												<td><input type="radio" id="member1" name="mem_type" value="6m"></td>
+												<td><input type="radio" id="member1" name="mem_type" required value="6m"></td>
 												<td>Half Yearly</td>
 												<td>600</td>
 												<td>ID Cards for 6 months</td>
 												<td>6M</td>					
 											</tr>
 											<tr onclick="document.getElementById('member2').checked = true;">
-												<td><input type="radio" id="member2" name="mem_type" value="12m"></td>
+												<td><input type="radio" id="member2" required name="mem_type" value="12m"></td>
 												<td>Yearly</td>
 												<td>1200</td>
 												<td>ID Cards for 1 Year</td>
@@ -177,10 +178,10 @@
 
 								<div class="form-group">
 							  		<label for="aoi">Choose area Of Interest:</label>
-								  	<label class="checkbox-inline"><input type="checkbox" value="Field" name="aoi[]">&nbspField</label>
+								  	<label class="checkbox-inline"><input  type="checkbox" value="Field" name="aoi[]">&nbspField</label>
 									<label class="checkbox-inline"><input type="checkbox" value="EVent Participation"  name="aoi[]">&nbspEvent Participation</label>
 									<label class="checkbox-inline"><input type="checkbox" value="HR" name="aoi[]">&nbspHR</label> 
-									<label class="checkbox-inline"><input type="checkbox" value="Donation" name="aoi[]">&nbspDonation</label> 
+									<label class="checkbox-inline"><input required type="checkbox" value="Donation" name="aoi[]">&nbspDonation</label> 
 								</div>
 
 
@@ -208,17 +209,13 @@
 								<div class="form-group">
 								  	<label class="checkbox-inline"><input type="checkbox" value="1" name="agree" onchange="activateButton(this)">&nbspI have read and understood each of above conditions. My signature below indicates that I agree to comply with them.</label>
 								</div>
-
-
 								<div class="form-group">
-									<input type="submit" class="btn btn-success" value="Submit" id="submitForm" required>
+									<input type="submit" class="btn btn-success" value="Submit" id="submitForm">
 								</div>
 
 							</form>
 						</div>	
 					</div>
-						
-					
 				</div>
 
 			</section>

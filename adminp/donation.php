@@ -26,8 +26,9 @@ function html_table($data = array())
     return $s. implode('', $rows). "</tbody></table>";
 }
 
-?>
 
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

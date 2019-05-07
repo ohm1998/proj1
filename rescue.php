@@ -1,3 +1,13 @@
+<?php 
+session_start();
+if(isset($_SESSION['rescue_added']) && $_SESSION['rescue_added']==1)
+{
+	echo "<script>alert('Entry Added')</script>";
+	unset($_SESSION['rescue_added']);
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,27 +49,26 @@
 </head>
 <body>
 <header id="header" id="home">
-	<div class="container main-menu">
-		<div class="row align-items-center justify-content-between d-flex">
-		<div id="logo">
-		<!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
-		<h3 class="title_nav">Dog Adoption</h3>
-	</div>
-	<nav id="nav-menu-container">
-	    <ul class="nav-menu">
-		    <li class="menu-active"><a href="index.html">Home</a></li>
-		    <li><a href="about.html">About Us</a></li>
-		    <li><a href="dogs.html">Dogs</a></li>
-		    <li><a href="adoption.php">Adoption</a></li>
-		    <li><a href="lost_found1.php">Lost and Found</a></li>
-		    <li><a href="membership.php">Membership</a></li>
-		    <li><a href="contact.html">Contact</a></li>
-		    <li><a href="rescue.php">Rescue</a></li>
-		</ul>
-	</nav><!-- #nav-menu-container -->		    		
-	</div>
-	</div>
-	</header><!-- #header -->
+			    <div class="container main-menu">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
+				        <a href="./"><h3 class="title_nav">NGO</h3></a>s
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li class="menu-active"><a href="index.html">Home</a></li>
+				          <li><a href="lost_found1.php">Lost and Found</a></li>
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="foster.php">Foster</a></li>
+				          <li><a href="membership.php">Volunteer</a></li>
+				          <li><a href="rescue.php">Rescue</a></li>
+				          <li><a href="donation.php">Sponsor</a></li>
+				        </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="container">

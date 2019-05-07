@@ -1,6 +1,8 @@
 <?php 
 require("./connection.php");
 
+session_start();
+
 print_r($_POST);
 
 print_r($_FILES);
@@ -22,5 +24,9 @@ echo $sql;
 mysqli_query($con,$sql);
 
 move_uploaded_file($_FILES['lost_photo']['tmp_name'], "./adminp/".$target);
+
+$_SESSION['lost_added']=1;
+
+header("Location: ./lost_found1.php");
 
 ?>

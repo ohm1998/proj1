@@ -4,6 +4,37 @@ require("./connection.php");
 session_start();
 $_SESSION['curr_page_class']='.foster';
 
+
+
+function html_table($data = array())
+{
+    $rows = array();
+    foreach ($data as $row) {
+        $cells = array();
+        foreach ($row as $cell) {
+            $cells[] = "<td>{$cell}</td>";
+        }
+        $rows[] = "<tr>" . implode('', $cells) . "</tr>";
+    }
+
+    $s = "<table class='table hover table-stripped table-bordered'>" ."<thead><tr>"; 
+
+    foreach($data[0] as $key=>$val)
+    {
+        $s = $s."<th>".ucfirst($key)."</th>";
+    }
+    $s = $s."</tr></thead><tbody>";
+    return $s. implode('', $rows). "</tbody></table>";
+}
+
+if(isset($_POST['del_user']))
+ {
+  $sql = "delete from foster_animal_details where id='".$_POST['del_user']."'";
+  mysqli_query($con,$sql);
+  header("Location: ./home.php");
+ }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,6 +73,38 @@ $_SESSION['curr_page_class']='.foster';
 	<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Submit">
 	</div>
-</form>
+</form><br> <br>
+<h2 class="alert alert-primary">Foster Animals</h2>
+<?php 
+
+$q = "select * from foster_animal_details";
+
+$res = mysqli_fetch_all(mysqli_query($con,$q),MYSQLI_ASSOC);
+foreach($res as $key=>$r)
+{
+	$res[$key]['Photo'] = "<img src='.".$res[$key]['photo_location']."' height=100 width=100>";
+	unset($res[$key]['photo_location']);
+}
+echo  html_table($res);
+
+?>
+   <h2 class="alert alert-primary">Delete Foster Animal:</h2>
+     <form action="./foster.php" method="POST" accept-charset="utf-8">
+          <input type="text" name="del_user" placeholder="Id Of Animal"><br><br>
+          <input type="submit" value="Delete">
+        </form><br>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('.table').DataTable({
+    	responsive: true
+    });
+} );
+</script>
 </body>
 </html>

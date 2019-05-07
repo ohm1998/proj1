@@ -1,7 +1,5 @@
 <?php 
-
-
-
+session_start();
 require("./connection.php");
 
 
@@ -15,6 +13,7 @@ $res = mysqli_query($con,$query);
 $q = "update adoption set adopt_status=1 where sr=".$_POST['anim_sr'];
 
 mysqli_query($con,$q);
+$_SESSION['adopt_added']=1;
 header("Location: ./adoption.php");
 
 ?>

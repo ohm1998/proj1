@@ -44,25 +44,26 @@ $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 	</head>
 	<body>
 		  <header id="header" id="home">
-		    <div class="container main-menu">
-		    	<div class="row align-items-center justify-content-between d-flex">
-			      <div id="logo">
-			        <a href="index.html"><h3 class="title_nav">Dog Adoption</h3></a>
-			      </div>
-			      <nav id="nav-menu-container">
+			    <div class="container main-menu">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
+				        <h3 class="title_nav">NGO</h3>
+				      </div>
+				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About Us</a></li>
-				          <li><a href="dogs.html">Dogs</a></li>
-				          <li><a href="adoption.php">Adoption & Lost/Found</a></li>
-				          <li><a href="membership.php">Membership</a></li>
-				          <li><a href="contact.html">Contact</a></li>
-				          			              
+				          <li><a href="lost_found1.php">Lost and Found</a></li>
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="foster.php">Foster</a></li>
+				          <li><a href="membership.php">Volunteer</a></li>
+				          <li><a href="rescue.php">Rescue</a></li>
+				          <li><a href="donation.php">Sponsor</a></li>
 				        </ul>
-			      </nav><!-- #nav-menu-container -->		    		
-		    	</div>
-		    </div>
-		  </header><!-- #header -->
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
 
 		<!-- start banner Area -->
 		<section class="banner-area relative" id="home">	
@@ -91,11 +92,11 @@ $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 							unset($res[0]['adopt_status']);
 							foreach ($res[0] as $key => $value)
 							{
-								if($key=="photo_location")
+								if($key=="photo_location" || $key=="sr")
 								{
 									continue;
 								}
-								echo "<b>".ucfirst($key).": ".ucfirst($value)."</b><br>";
+								echo "<h3 style='color:#fab700; float:left; padding: 5px; margin: 15px;'>".ucfirst($key).": ".ucfirst($value)."</h3>";
 							} 
 						?>
 						<br>
@@ -115,7 +116,7 @@ $res = mysqli_fetch_all(mysqli_query($con,$sql),MYSQLI_ASSOC);
 										<input type="hidden" name="anim_sr" value="<?php echo $_GET['sr']; ?>">
 									</div>
 									<div class="col-lg-6 form-group">
-										<textarea class="common-textarea form-control" name="address" placeholder="Enter address of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter address of animal'" required=""></textarea>						
+										<textarea class="common-textarea form-control" name="address" placeholder="Enter address of animal" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Address'" required=""></textarea>						
 									</div>
 									<div class="col-lg-12 d-flex justify-content-between">
 										<div class="alert-msg" style="text-align: left;"></div>

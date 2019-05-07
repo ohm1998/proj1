@@ -1,3 +1,13 @@
+<?php 
+session_start();
+if(isset($_SESSION['adopt_added']) && $_SESSION['adopt_added']==1)
+{
+	echo "<script>alert('Entry Added')</script>";
+	unset($_SESSION['adopt_added']);
+}
+
+
+?>
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
@@ -44,19 +54,18 @@
 			    <div class="container main-menu">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><h3 class="title_nav">Dog Adoption</h3></a>
+				        <!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
+				        <a href="./"><h3 class="title_nav">NGO</h3></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About Us</a></li>
-				          <li><a href="dogs.html">Dogs</a></li>
-				          <li><a href="adoption.php">Adoption</a></li>
 				          <li><a href="lost_found1.php">Lost and Found</a></li>
-
-				          <li><a href="membership.php">Membership</a></li>
-				          <li><a href="contact.html">Contact</a></li>
-				          			              
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="foster.php">Foster</a></li>
+				          <li><a href="membership.php">Volunteer</a></li>
+				          <li><a href="rescue.php">Rescue</a></li>
+				          <li><a href="donation.php">Sponsor</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
@@ -71,7 +80,7 @@
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
 								Adoption			
-							</h1>	
+							</h1>
 							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="./adoption.php"> Adoption </a></p>
 						</div>	
 					</div>
@@ -82,7 +91,7 @@
 			<!-- Start cat-list Area -->
 			<section class="cat-list-area section-gap" >
 				<div class="container">
-				<h2>Adoption:</h2><br>
+				<h2>Adoption:</h2><h4>(Click To fill Form)</h4><br>
 					<div class="row">
 						<?php  
 						require("./connection.php");
@@ -121,7 +130,6 @@
 							Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
 						</p>
 						<div class="buttons d-flex flex-row">
-							<a href="#" class="primary-btn text-uppercase">View pdf details</a>
 							<a href="#" class="primary-btn text-uppercase">Register now</a>
 						</div>
 					</div>

@@ -44,19 +44,18 @@
 			    <div class="container main-menu">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><h3 class="title_nav">NGO</h3></a>
+				        <!-- <a href="index.html"><img src="img/logo.png" alt="" title="" /></a> -->
+				        <a href="./"><h3 class="title_nav">NGO</h3></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About Us</a></li>
-				          <li><a href="dogs.html">Dogs</a></li>
-				          <li><a href="adoption.php">Adoption</a></li>
 				          <li><a href="lost_found1.php">Lost and Found</a></li>
-
-				          <li><a href="membership.php">Membership</a></li>
-				          <li><a href="contact.html">Contact</a></li>
-				          			              
+				          <li><a href="adoption.php">Adoption</a></li>
+				          <li><a href="foster.php">Foster</a></li>
+				          <li><a href="membership.php">Volunteer</a></li>
+				          <li><a href="rescue.php">Rescue</a></li>
+				          <li><a href="donation.php">Sponsor</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
@@ -95,8 +94,8 @@
 									$q = "select sum(amount) as amount from donation where case_id=".$r['case_id']." and payment=1";
 									$a = mysqli_fetch_all(mysqli_query($con,$q),MYSQLI_ASSOC);
 									$tot_donation = $a[0]['amount'];
-									echo $tot_donation."<br>";
-									echo $r['cost'];
+									//echo $tot_donation."<br>";
+									//echo $r['cost'];
 									if($tot_donation=="")
 									{
 										$perc=0;
@@ -150,8 +149,7 @@
 							Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
 						</p>
 						<div class="buttons d-flex flex-row">
-							<a href="#" class="primary-btn text-uppercase">View pdf details</a>
-							<a href="#" class="primary-btn text-uppercase">Register now</a>
+							<a href="./membership.php" class="primary-btn text-uppercase">Register now</a>
 						</div>
 					</div>
 				</div>	
