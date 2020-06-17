@@ -61,6 +61,7 @@ if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
         <a class="list-group-item list-group-item-action bg-light foster">Foster Animals</a>
         <a class="list-group-item list-group-item-action bg-light foster_enquiry">Foster Enquiry</a>
         <a class="list-group-item list-group-item-action bg-light donation">Donations</a>
+        <a class="list-group-item list-group-item-action bg-light member_add_case">Assign Case (For members)</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -134,7 +135,7 @@ if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
   {
     $(".load").load("./donation.php");
     
-  });
+  }); 
   $(".foster").click(function()
   {
     $(".load").load("./foster.php");
@@ -162,6 +163,15 @@ if(!isset($_SESSION['pass']) || !$_SESSION['pass']==1 )
   {
     $(".load").load("./rescue_unattended.php");
   });
+
+
+  $(".member_add_case").click(function()
+  {
+    $(".load").load("./member_add_case.php");
+    
+  });
+
+
 </script>
 <script type="text/javascript">
 	var a = (<?php echo $curr_page_class; ?>);
